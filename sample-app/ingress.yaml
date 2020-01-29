@@ -6,6 +6,10 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/subnets: subnet-02a7e648974437c4e,subnet-0966c68354d05be51,subnet-0e212025a03f96103
+    alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
+
   labels:
     app: 2048-ingress
 spec:
@@ -16,10 +20,6 @@ spec:
             backend:
               serviceName: "service-2048"
               servicePort: 80
-            path: /app
-            backend:
-               serviceName: "kibana"
-               servicePort: 5601              
 ---
 # apiVersion: extensions/v1beta1
 # kind: Ingress
